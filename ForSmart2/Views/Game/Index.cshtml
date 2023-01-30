@@ -1,20 +1,37 @@
 ﻿@{
     ViewData["Title"] = "Game page";
+    Layout = null;
 }
 
-<div>
-    <img src="~/img/map.webp" />
+<div cl>
+    @*style="background-image: url('/img/map.webp')"*@
+    <div class="area-left"></div>
+    <div class="map-container" >
+        <img class="map" src="~/img/map.webp" />
+    </div>
 
     <div></div>
-    @for (int i = 0; i < 50; i++)
+@*    @for (int i = 0; i < 50; i++)
     {
-    <div class="thing"></div>
+        <div class="thing" style=""></div>
         
-    }
+    }*@
 
 </div>
 
 <style>
+    .area-left {
+        width: 20%;
+    }
+
+    .map {
+        opacity:2%;
+        width: 60%;
+        /*margin-left: 20%;*/
+        margin-right: 20%;
+        margin-top: 3%;
+    }
+
     .thing {
         border: 1px solid red;
         width: 10px;
@@ -23,8 +40,3 @@
         top: 0;
     }
 </style>
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
