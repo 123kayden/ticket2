@@ -1,16 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Game page";
-    Layout = null;
+    
 }
 
-<div cl>
-    @*style="background-image: url('/img/map.webp')"*@
+<div class="whole-thing">
     <div class="area-left"></div>
     <div class="map-container" >
         <img class="map" src="~/img/map.webp" />
     </div>
+    <div class="area-right"></div>
 
-    <div></div>
 @*    @for (int i = 0; i < 50; i++)
     {
         <div class="thing" style=""></div>
@@ -20,23 +19,5 @@
 </div>
 
 <style>
-    .area-left {
-        width: 20%;
-    }
 
-    .map {
-        opacity:2%;
-        width: 60%;
-        /*margin-left: 20%;*/
-        margin-right: 20%;
-        margin-top: 3%;
-    }
-
-    .thing {
-        border: 1px solid red;
-        width: 10px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-    }
 </style>
