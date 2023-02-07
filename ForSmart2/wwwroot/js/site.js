@@ -16,9 +16,13 @@ $(function () {
         var relx = e.pageX - posX;
         var rely = e.pageY - posY;
 
-        $(".map-container").append("<div class='station'></div>");
+        var stationNumber = 1;
+        var stationClass = "station-" + stationNumber;
 
+        $(".map-container").append("<div class='station " + stationClass + "' data-x='500px'></div>");
 
+        $('.' + stationClass).css('left', relx+'px');
+        $('.' + stationClass).css('top', rely+'px');
     });
 });
 
