@@ -2,27 +2,69 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-
+var nodeNumber = 0; 
 
 var isRouteCreate = false;
 
 $(function () {
     //$(".map").hide();
-
-    $(".map").off().on("click", function (e) {
+    var mapElement = $(".map")
+    mapElement.off().on("click", function (e) {
         var posX = $(this).offset().left, posY = $(this).offset().top;
         //alert((e.pageX - posX) + ' , ' + (e.pageY - posY));
 
         var relx = e.pageX - posX;
         var rely = e.pageY - posY;
 
-        var stationNumber = 1;
-        var stationClass = "station-" + stationNumber;
+        var mapWidth = mapElement.width()
+        var mapHeight = mapElement.height()
 
-        $(".map-container").append("<div class='station " + stationClass + "' data-x='500px'></div>");
+        var relXPercent = (relx) / mapWidth*100
+        var relYPercent = (rely) / mapHeight * 100;
 
-        $('.' + stationClass).css('left', relx+'px');
-        $('.' + stationClass).css('top', rely+'px');
+        nodeNumber++;
+        var nodeClass = "station-" + nodeNumber;
+        $(".map-container").append("<div class='node " + nodeClass + "' data-x='500px'><div class='node-content'></div></div>");
+
+        $('.' + nodeClass).css('left', relXPercent +'%');
+        $('.' + nodeClass).css('top', relYPercent + '%');
+
+        //var nodes = localStorage.getItem('nodes');
+        debugger;
+        var nodesString = localStorage.getItem('nodes');
+
+
+        var nodes;
+
+        if (!nodesString)
+            nodes = nodes = {
+                nodeList: []
+            };
+        else nodes = JSON.parse(nodesString)
+
+
+
+        var newNode = {
+            'nodeId': 1,
+            'x': 1,
+            'y': 2,
+        }
+
+        nodes['nodeList'].push(newNode);
+
+
+        //nodes = {
+        //   nodeList: [
+        //        {
+        //        'nodeId': 1,
+        //        'x': 1,
+        //        'y': 2,
+        //        }
+        //    ]
+        //};
+
+        localStorage.setItem('nodes', JSON.stringify(nodes));
+
     });
 });
 

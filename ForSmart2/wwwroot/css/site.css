@@ -28,17 +28,27 @@ body {
     height: 100vh;
 }
 
+.map-top {
+    height:6%
+}
+
 .map-container {
     /*flex: 1 1 auto;*/
     background-color: blue;
-    width: 64%;
+    /*width: 64%;*/
     /*margin-top:60px;*/
-    position:relative;
+    position: relative;
+    cursor: crosshair
 }
 
 .area-left, .area-right {
-    background-color: red;
+    background-color: indianred;
     width:18%
+}
+
+.area-centre {
+    background-color: deepskyblue;
+    width: 64%
 }
 
 .map {
@@ -54,12 +64,37 @@ body {
     top: 0;
 }
 
-.station {
-    height: 16px;
-    width: 16px;
+.node {
+    height: 1px;
+    width: 1px;
     border-radius: 16px;
-    background-color: green;
     position: absolute;
-/*    left: 262px;
+    animation: hilite 1s infinite;
+    /*    left: 262px;
     top: 678px;*/
+}
+
+@keyframes hilite {
+    0% {
+        background-color: white;
+    }
+
+    50% {
+        background-color: black;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
+
+.node-content {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    opacity: 0.9;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius:10px
 }
