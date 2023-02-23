@@ -29,8 +29,6 @@ $(function () {
         $('.' + nodeClass).css('left', relXPercent +'%');
         $('.' + nodeClass).css('top', relYPercent + '%');
 
-        //var nodes = localStorage.getItem('nodes');
-        debugger;
         var nodesString = localStorage.getItem('nodes');
 
 
@@ -43,27 +41,41 @@ $(function () {
         else nodes = JSON.parse(nodesString)
 
 
-
         var newNode = {
-            'nodeId': 1,
-            'x': 1,
-            'y': 2,
+            'nodeId': nodeNumber,
+            'x': relXPercent,
+            'y': relYPercent,
         }
 
         nodes['nodeList'].push(newNode);
 
 
-        //nodes = {
-        //   nodeList: [
-        //        {
-        //        'nodeId': 1,
-        //        'x': 1,
-        //        'y': 2,
-        //        }
-        //    ]
-        //};
-
         localStorage.setItem('nodes', JSON.stringify(nodes));
+
+    });
+
+
+
+    $("#load-nodes").off().on("click", function (e) {
+        var nodesString = localStorage.getItem('nodes');
+        var nodes;
+
+        if (!nodesString)
+            nodes = nodes = {
+                nodeList: []
+            };
+        else nodes = JSON.parse(nodesString)
+
+        nodes.nodeList.forEach(function (val, i) {
+            nodeNumber = Math.max(nodeNumber, parseInt(val['nodeId']))
+            var nodeClass = "station-" + val['nodeId'];
+            $(".map-container").append("<div class='node " + nodeClass + "' data-x='500px'><div class='node-content'></div></div>");
+
+            $('.' + nodeClass).css('left', val['x'] + '%');
+            $('.' + nodeClass).css('top', val['y'] + '%');
+        });
+
+
 
     });
 });
